@@ -84,24 +84,22 @@ $("document").ready(function () {
         //eg you want 1am, since it is the first hour, 0 will get it
         let currentHour = moment().format("HH") - 1;
 
-        //up untill the current hour we will change the divs to our past color
-        for (i = 0; i < currentHour; i++) {
-            let divPast = container.children[i];
-            divPast.style.backgroundColor = "gray";
-            divPast.style.border = "gray solid thick";
-            container.children[i].children[2].style.backgroundColor = "gray";
-        }
+        for (i = 0; i < container.childElementCount; i++) {
+            let div = container.children[i];
 
-        let divPresent = container.children[currentHour];
-        divPresent.style.backgroundColor = "green";
-        divPresent.style.border = "green solid thick";
-        container.children[currentHour].children[2].style.backgroundColor = "green";
-
-        for (i = currentHour + 1; i < 24; i++) {
-            let divFuture = container.children[i];
-            divFuture.style.backgroundColor = "blue";
-            divFuture.style.border = "blue solid thick";
-            container.children[i].children[2].style.backgroundColor = "blue";
+            if (i < currentHour) {
+                div.style.backgroundColor = "gray";
+                div.style.border = "gray solid thick";
+                container.children[i].children[2].style.backgroundColor = "gray";
+            } else if (i > currentHour) {
+                div.style.backgroundColor = "blue";
+                div.style.border = "blue solid thick";
+                container.children[i].children[2].style.backgroundColor = "blue";
+            } else {
+                div.style.backgroundColor = "green";
+                div.style.border = "green solid thick";
+                container.children[currentHour].children[2].style.backgroundColor = "green";
+            }
         }
 
         for (i = 0; i < timeblocks.length; i++) {
@@ -118,8 +116,6 @@ $("document").ready(function () {
             //their second element child is the save button
             container.children[i].children[2].addEventListener("click", () => {
                 //https://www.youtube.com/watch?v=h33Srr5J9nY
-
-                //TODO see if i can condense this
                 let value = event.target.value;
                 let instance = value.substring(10);
                 let textInput = document.querySelector(("#displayInput" + instance));
@@ -129,7 +125,7 @@ $("document").ready(function () {
                     timeblocks.push(new timeblock(instance, eventLog));
                     update();
                 } else {
-                    if(findTimeblock(instance) > 0) {
+                    if (findTimeblock(instance) > 0) {
                         let matchIndex = findTimeblock(instance);
                         timeblocks.push(new timeblock(matchIndex, eventLog))
                     }
