@@ -13,6 +13,4 @@ With the provided starter code, my task was to implement a day planner through j
 ### Link video here
 -----------------------------
 
-![Video Demo](https://drive.google.com/file/d/144VU3y0IJDJGCy0RYA9iZ6y7PVZLJqkl/view)
-
 [Video Demo](https://drive.google.com/file/d/144VU3y0IJDJGCy0RYA9iZ6y7PVZLJqkl/view)
