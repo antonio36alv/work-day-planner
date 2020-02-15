@@ -31,10 +31,11 @@ textarea{
 }
 
 .container {
-  width: 80%;
+  width: 90%;
 }
 
 .timeblock {
+  /* width: 100%xxxx; */
   display: flex;
   flex-direction: row;
   height: 80px;
